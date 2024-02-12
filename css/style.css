@@ -2,3 +2,8 @@ body {
 	background-color: #282a36;
 	color: #f8f8f2;
 }
+
+.topnav a {
+	color: white;
+	text-decoration: underline;
+}
