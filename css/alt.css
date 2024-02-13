@@ -35,6 +35,12 @@ body {
 	background-color: #a5adcb;
 }
 
+#content_button {
+	color: #494d64;
+	border-color: #5b6078;
+	background-color: #a5adcb;
+}
+
 #lightmode {
 	background: 0;
 	padding: 4px;

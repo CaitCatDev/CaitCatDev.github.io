@@ -22,6 +22,12 @@ body {
 	background-color: #494d64;
 }
 
+#content_button {
+	background: #494d64;
+	border-color: #5b6078;
+	color: #a5adcb;
+}
+
 .topnav a {
 	color: #b8c0e0;
 	background-color: #494d64;

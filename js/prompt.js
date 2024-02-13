@@ -44,4 +44,18 @@ function keydown_event(event) {
 	}
 }
 
+function display_all_content() {
+	if(input.innerHTML == "") {
+		document.getElementById("about").setAttribute("style", "display: block");
+		document.getElementById("projects").setAttribute("style", "display: block");
+		/*Hide Sudo and help as they don't "fit" when user opts to skip the terminal
+		 * game and don't make sense to be displayed
+		 */
+		document.getElementById("sudo").setAttribute("style", "display: none");
+		document.getElementById("help").setAttribute("style", "display: none");
+		document.getElementById("result").setAttribute("style", "display: none");
+		return
+	}
+}
+
 document.addEventListener('keydown', keydown_event);
