@@ -4,17 +4,53 @@
 		<title></title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="./css/style.css" rel="stylesheet">
+		<link id="mainsheet" href="./css/style.css" rel="stylesheet">
+		<link href="./css/common.css", rel="stylesheet">
+		<link rel="icon" type="image/x-icon" href="./images/favicon.ico">
 	</head>
 	<body>
 		<nav class="topnav">
-		<a href="./index.html">&lt;root&gt;</a>
-		<a href="https://www.github.com/caitcatdev">&lt;github&gt;</a>
+		<a href="./index.html">root</a>
+		<a href="https://www.github.com/caitcatdev">github</a>
+		<button id="lightmode" type="button">○</button>
 		</nav>
-		<p>&gt; cat index.html</p>
-		<p>Under construction</p>
+		<img id="avatar" style="border-radius: 50%; height: 128px; width: 128px" src="./images/me.png" alt="Avatar">
+		
+		<h1 id="title">Caitcatdev</h1>
+		<div id="about">
+			<h2>About me:</h2>
+			<p>I'm a 24 year old developer from the UK, I enjoy using Linux, BSD and other open source software. Most of my projects are done for personal enjoyment. I specialise in C but have worked in Rust, Java, Python and others, along with web technologies HTML, JS, CSS, etc...</p>
+
+			<p>I specialise to work on low level so I can deliver when performance matters. I.E. skipping using libraries in favour of knowing how something works rather than knowing a library just works. But of course I do also use libraries for topics I already know/in more serious less learning oriented projects.</p>
+		</div>
+		<div id="projects">
+			<h2>My Projects:</h2>
+			<h3>TTC-HTTP:</h3>
+			<p>A C library for creating sockets, websockets, and handling HTTP requests and response. Originally developed for use in a discord bot made with friends but also being used by me to make a toy browser engine with basic HTML support.</p>
+			<h3>Stardust wl:</h3>
+			<p>More info to come</p>
+			<h3>Stardust:</h3>
+			<p>More info to come</p>
+			<h3>Magma Term:</h3>
+			<p>A Vulkan Accelerated terminal currently not actively developed whilst bot development takes prioty</p>
+		</div>
+		<div id="help">
+			<h2>Help:</h2>
+			<p>My site is designed to be a fun an interactive sort of game where you type the below and hit enter to display the content. If you have issues relating to input or just want to see the content please just hit the enter key, That will display all relavent content.</p>
+			<p>Commands</p>
+			<ul>
+				<li>about</li>
+				<li>projects</li>
+				<li>help</li>
+			</ul>
+		</div>
+		<div id="sudo">
+			<h2>Sudo:</h2>
+			<p>user is is not in the sudoers file. This incident has been reported to the administrator.</p>
+		</div>
+		<p id="result">Command not found</p>
 		<p>&gt;<span id="input"></span><span id="prompt">_</span></p>
-		<p id="result"></p>
 	</body>
 	<script src="./js/prompt.js"></script>
+	<script src="./js/lightmode.js"></script>
 </html>

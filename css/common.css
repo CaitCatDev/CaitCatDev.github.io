@@ -1,0 +1,12 @@
+
+#title:hover:before {
+	content: "Goblin ";
+}
+
+#sudo,
+#result,
+#projects,
+#about {
+	display: none;
+}
+

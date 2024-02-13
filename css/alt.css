@@ -1,6 +1,6 @@
 body {
-	background-color: #24273a;
-	color: #cad3f5;
+	color: #24273a;
+	background-color: #cad3f5;
 }
 
 #avatar {
@@ -13,18 +13,18 @@ body {
 
 #title {
 	text-align: center;
-	color: #b8c0e0;
-	background-color: #494d64;
+	background-color: #b8c0e0;
+	color: #494d64;
 }
 
 .topnav {
 	margin: 0px;
-	background-color: #494d64;
+	background-color: #b8c0e0;
 }
 
 .topnav a {
-	color: #b8c0e0;
-	background-color: #494d64;
+	background-color: #b8c0e0;
+	color: #494d64;
 	font-size: 20px;
 	text-decoration: none;
 	border-right: solid;
@@ -32,21 +32,21 @@ body {
 }
 
 .topnav a:hover {
-	background-color: #5b6078;
+	background-color: #a5adcb;
 }
 
 #lightmode {
 	background: 0;
 	padding: 4px;
-	background-color: #494d64;
-	color: #b8c0e0;
+	color: #494d64;
+	background-color: #b8c0e0;
 	border: none;
 	font-size: 20px;
 	cursor: pointer;
 }
 
 #lightmode:hover {
-	background-color: #5b6078;
+	background-color: #a5adcb;
 }
 
 .topnav a.active {
