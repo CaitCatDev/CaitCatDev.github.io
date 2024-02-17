@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Cat's Blog</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="/css/style.css" rel="stylesheet">
+		<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+	</head>
+	<body>
+		<nav class="topnav">
+		<a href="/">root</a>
+		<a href="/blog/">blog</a>
+		<a href="https://www.github.com/caitcatdev">github</a>
+		<button id="lightmode" type="button">○</button>
+		</nav>
+		
+<h1 class="title">
+  POSIX and why it matters
+</h1>
+<p class="subtitle"><strong>2024-02-17</strong></p>
+<p>I primarily work on BSD and projects designed to work on BSD-like platforms however I like to make an effort to conform to POSIX where and when I can and it's simple why really. I like BSD and am comfy on it right now but if I ever wanted to swap to lets say Linux for example. I would need to port applications I have written to work on Linux as functions that exist on BSD but not Linux obviously can't be used and the same applies to if I was to develop software for Linux. Functions from Linux can't be used on BSD, so this is where POSIX steps in providing a set of really useful tools and functions intended to make cross platform develop easier.</p>
+<p>Essentially letting me know if a OS supports POSIX <code>poll</code> for example I as a developer do not need to know how it works internally on that OS. Just that it functions according to the behaviours laid out in the POSIX man pages and specifications and can be confident it is doing exactly what I need it to on whatever OS is it run on. But if I was to use something like <code>epoll</code> or <code>kqueue</code> two ways to poll for input on FD's exclusive to Linux and BSD respectively I would essentially be hard locking myself out of using the software on a different OS without redeveloping it.</p>
+<p>An example of this can be seen in Wayland. A project I love and use every day on my system but internally Wayland's event loop uses Linux's epoll to dispatch the event loop. But as a consequence of this me on BSD I need to use a epoll-shim library with Wayland to implement epoll on top of kqueue which works and I am happy it does. But and this comes down to my opinion it would have been better to use something like <code>poll</code> from the start and have it work on <em><strong>POSIX</strong></em> systems. </p>
+<p>Technically Wayland still could swap <code>epoll</code> out but I very much doubt it will be at least until there is something in POSIX that can keep the <code>wl_event_loop_get_fd()</code> function working as that being a public facing part of the API breaking that in favor of POSIX compatibility would break projects using that function with no good way for those projects to fix it. But why talk about Wayland well it's modern and it's a great example of why to think when developing, especially as there are now talks of changing the Wayland event loop to not use <code>epoll</code> (see <a href="https://gitlab.freedesktop.org/wayland/wayland/-/issues/214">here</a>). Again I don't think anything will come of these talks until there is a way found to do it without breaking API compatibility. But my point is if this had been considered early in development it would've been a lot easier to swap as there would be less pieces of code relying on that one function.</p>
+<p>So the point I am trying to make is when developing something consider your audience and the tools you are using make clear cut choices on what you want to achieve as I have friends that want their code to be POSIX but also make mistakes not on purpose but just because they are so used to something like <code>epoll</code> always being present they go to use it regardless of if they need to.</p>
+<p>I want to also make it clear I am not saying just saying <code>epoll</code> bad because it's not POSIX I've used <code>epoll</code> and <code>kqueue</code> before but those where projects designed to only work on Linux and BSD. If you simply want to make software to only run on Linux then do that or if you only want software that runs on BSD do that but it can be worth giving these things a consideration before you implement them as using something that isn't standard to POSIX, the OS C library, etc... can lead to more headache in the future when you or someone else decides to port your project to a different system. As after years of development you will come to rely on things that are not standard it will make getting rid of them so much harder.</p>
+<p>Another side to consider is even if something isn't strictly possible in POSIX it can still be worth sticking to POSIX where possible simple because if you then choose to port the code you will have less code to port overall. The same way most OS projects choose to write most of their code in C/Rust as a opposed to Assembly as it saves a lot of time and effort in the porting processing.</p>
+
+
+	</body>
+</html>

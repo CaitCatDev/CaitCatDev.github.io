@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Cat's Blog</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="/css/style.css" rel="stylesheet">
+		<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+	</head>
+	<body>
+		<nav class="topnav">
+		<a href="/">root</a>
+		<a href="/blog/">blog</a>
+		<a href="https://www.github.com/caitcatdev">github</a>
+		<button id="lightmode" type="button">○</button>
+		</nav>
+		
+<h1 class="title">
+  Firmware and bugs
+</h1>
+<p class="subtitle"><strong>2024-02-17</strong></p>
+<p>If you've worked with code at all or just used a computer you are undoubtly aware of bugs, glitches and other oddities in programs.</p>
+<p>Some of you may even think that programs such as firmware have to be perfect in the sense they have to have absolutley no bugs for the hardware they are providing firmware for to work but that is far from the truth and firmware can still be riddled with bugs just like any other code.</p>
+<p>So lets start with some basic terminology and what they actually mean just to make sure everyone understands.</p>
+<ul>
+<li>
+<p>Firmware 
+Firmware is a program providing with a piece of hardware that provides initlisation and some very basic functionality to get your own code running on the hardware platform along with giving some interface between software and hardware, think of BIOS or UEFI on X86.</p>
+</li>
+<li>
+<p>Software
+Just some code running on a PC.</p>
+</li>
+<li>
+<p>A bootloader
+A program designed to start other programs.</p>
+</li>
+<li>
+<p>Hardware 
+The physical device that we can touch and interact with.</p>
+</li>
+</ul>
+<p>So I wanted to talk about this today as I found a funny bug in my PCs firmware and this is a bug I did know about but I have only seen it in really old PCs and didn't think it was still in firmware as modern as mine. So today when I was working on my bootloader I figured I'd give it a go on my actual desktop PC. So I put it on a USB stick plug it in turn on my PC and huh nothing just a black screen with a blinking cursor.</p>
+<p>Well this isn't good as I think so I grab a Laptop of mine that has a known good BIOS and I give it a go on that and it works first try. Which left me with the fun task of debugging my desktops faulty BIOS implementation. Now depending on your PC this isn't always going to be a pain to do as a lot of older PCs comes with Serial COM ports that can be used to create virtual terminal to dump debug information to. Sadly my desktop is a &quot;Gamer&quot; motherboard so no COM ports in site and nothing in the manual about debugging.</p>
+<p>So I think to do the class the coder inserting &quot;random&quot; print statements to see where my code gets to. I notice the first print statement isn't triggered but the second one is. Thanks to knowing of this bug before hand I knew exactly what was happening straight away my PCs BIOS was skipping the code in the BPB area of the MBR having overwritten it with none sense data. Meaning I need to pad my code to skip that area of code so that it can work on my BIOS I do so and it boots to life straight away.</p>
+<p>So why does this happen? Well to put it simply whoever made my computer's BIOs was trying to be &quot;helpful&quot;. By writing the BIOS's CHS disk emulation data into the BPB of my MBR. However it's a complicated topic and not all BIOs do this which means as useful as it is or may be to me, I can't use it as it would break compatibility with other BIOs. So instead I have to work around this behaviour to get my code to work on this machine. Now there are other firmware bugs to of completely different types to.</p>
+<p>So what is a firmware bug? Well it's simply when your PC/hardware manufacturer made a weird decision that is non standard or a mistake when making the firmware for your hardware causing your firmware to respond in unpredictable ways in comparison to others that follows standards more closely. Which is why as Os-devs and bootloader devs we have to be incredibly careful to work around these issues as and when they appear.</p>
+<p>How to do this? While first step make <strong>no assumptions!</strong> This goes for all code really assumptions are your number one and number two enemy, as devs we may chose to run a piece of code like <code>malloc()</code> and just assume it's worked because 99.999% of the time it does just work, but it isn't a guaranteed success. Same things ring true for bootloaders and lower level code for Legacy systems the boot process starts at memory address <code>0x7c00</code> in linear memory address but there is not guarantee on what the state of registers look like in the CPU what the state of the <code>segement:offset</code> is or the stack. So it's simply best to assume when interacting with firmware you do not have the source code for that you need to work around it wherever that may come up. </p>
+<p>So the lesson don't be lazy when coding just cause you think your hardware &quot;should be fine&quot; and when calling any code that you don't 100% know how it works internally always try to work around potential bugs in user space this may mean not passing a NULL ptr or invalid argument in. With firmware this would mean assuming the firmware didn't do something for you rather than assuming it did.</p>
+
+
+	</body>
+</html>
