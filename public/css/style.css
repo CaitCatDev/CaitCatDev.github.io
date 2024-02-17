@@ -37,8 +37,31 @@ body {
 	padding: 4px;
 }
 
+.blog-post a:hover,
 .topnav a:hover {
 	background-color: #5b6078;
+}
+
+.blog-post a {
+	text-decoration: none;
+	border-radius: 40px;
+	padding: 20px;
+	display: inline-block;
+	color: #f8f8f2;
+}
+
+.blog-post {
+  font-size: 1.2em;
+  color: #f8f8f2;
+  background: #494d64;
+
+	display: inline-block;
+
+  border-radius: 40px;
+
+	margin: 5px;
+
+	cursor: pointer;
 }
 
 #lightmode {
@@ -57,4 +80,15 @@ body {
 
 .topnav a.active {
 	
+}
+
+#title:hover:before {
+	content: "Goblin ";
+}
+
+#sudo,
+#result,
+#projects,
+#about {
+	display: none;
 }

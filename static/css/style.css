@@ -1,0 +1,94 @@
+body {
+	background-color: #24273a;
+	color: #cad3f5;
+}
+
+#avatar {
+	margin-top: 4px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width 50%;
+}
+
+#title {
+	text-align: center;
+	color: #b8c0e0;
+	background-color: #494d64;
+}
+
+.topnav {
+	margin: 0px;
+	background-color: #494d64;
+}
+
+#content_button {
+	background: #494d64;
+	border-color: #5b6078;
+	color: #a5adcb;
+}
+
+.topnav a {
+	color: #b8c0e0;
+	background-color: #494d64;
+	font-size: 20px;
+	text-decoration: none;
+	border-right: solid;
+	padding: 4px;
+}
+
+.blog-post a:hover,
+.topnav a:hover {
+	background-color: #5b6078;
+}
+
+.blog-post a {
+	text-decoration: none;
+	border-radius: 40px;
+	padding: 20px;
+	display: inline-block;
+	color: #f8f8f2;
+}
+
+.blog-post {
+  font-size: 1.2em;
+  color: #f8f8f2;
+  background: #494d64;
+
+	display: inline-block;
+
+  border-radius: 40px;
+
+	margin: 5px;
+
+	cursor: pointer;
+}
+
+#lightmode {
+	background: 0;
+	padding: 4px;
+	background-color: #494d64;
+	color: #b8c0e0;
+	border: none;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+#lightmode:hover {
+	background-color: #5b6078;
+}
+
+.topnav a.active {
+	
+}
+
+#title:hover:before {
+	content: "Goblin ";
+}
+
+#sudo,
+#result,
+#projects,
+#about {
+	display: none;
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Cat's Blog</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="/css/style.css" rel="stylesheet">
+		<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+	</head>
+	<body>
+		<nav class="topnav">
+		<a href="/">root</a>
+		<a href="/blog/">blog</a>
+		<a href="https://www.github.com/caitcatdev">github</a>
+		<button id="lightmode" type="button">○</button>
+		</nav>
+		{% block content %} {% endblock %}
+	</body>
+</html>

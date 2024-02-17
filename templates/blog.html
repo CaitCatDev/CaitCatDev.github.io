@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  {{ section.title }}
+</h1>
+<ul>
+  <!-- If you are using pagination, section.pages will be empty. You need to use the paginator object -->  
+  {% for page in section.pages %}
+	<div class="blog-post">
+	<a href="{{ page.permalink | safe }}">
+		<h3 class="blog-post-title">{{ page.title }} - {{ page.date }}:</h3>
+		<p class="blog-post-preview">{{ page.content | safe | striptags | truncate(length=300) }}</p>
+	</a>
+	</div>
+  {% endfor %}
+</ul>
+{% endblock content %}
